@@ -1,0 +1,46 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a API to update the booking DB with status ‘Cancelled’ and\
+    \ update the Cancellation ID"
+  version: "1.0.0"
+  title: "Flight Booking Cancellation"
+basePath: "/ipm-tib-tps/va/airline"
+paths:
+  /cancelFlightBooking:
+    put:
+      tags:
+        - "Cancel Flight Booking"
+      summary: "updates the booking DB with status ‘Cancelled’ and updates the Cancellation\
+        \ ID"
+      description: "By passing the booking reference no and email/ph no booking is\
+        \ cancelled.\n"
+      operationId: "cancelFlightBooking"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "BookingRefNo"
+        in: "query"
+        description: "Booking Reference No"
+        required: true
+        type: "string"
+      - name: "EmailOrPhone"
+        in: "query"
+        description: "Email or Phone No"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Prices for matching criteria"
+          schema:
+            $ref: "#/definitions/Cancellation"
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "Default"
+definitions:
+  Cancellation:
+    type: "object"
+    properties:
+      CancellationId:
+        type: "string"
+  
