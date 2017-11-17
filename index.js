@@ -6,7 +6,9 @@ var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var fs = require('fs');
 //var serverPort = 9000;
-var serverPort = process.env.PORT || 3000;
+//var serverPort = process.env.PORT || 3000;
+var serverPort = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080 ;
+
 // swaggerRouter configuration
 var options = {
   swaggerUi: '/swagger.json',
